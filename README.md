@@ -1,5 +1,5 @@
 # Introduction
-Auther: ianvzs
+Auther: ian
 
 此书中主要系统的汇总软件相关，编码相关，编程语言相关，嵌入式硬件，或者手机、PC以及其他电子设备的软硬设置相关的东西。
 
