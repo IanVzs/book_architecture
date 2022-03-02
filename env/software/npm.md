@@ -4,7 +4,8 @@
 2. 配置PATH
 3. 向`/usr/local/bin/`下建立`node`软链
 ```
-ln -s ~/nodejs/bin/node /usr/local/bin/node
+export PATH="~/node-v16.14.0-linux-arm64/bin:$PATH"
+#sudo ln -s ~/node-v16.14.0-linux-arm64/bin/node /usr/bin/node
 ```
 ## Windows下wsl2 安装 npm && nodejs
 摘抄自[微软说明文档](https://docs.microsoft.com/zh-cn/windows/dev-environment/javascript/nodejs-on-wsl)
