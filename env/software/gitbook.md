@@ -37,3 +37,18 @@ npm 安装软件不出点儿问题貌似都不是很合适, 该问题代码级�
 ```
 	PDF and other ebook formats exports ？ The new version of GitBook no longer supports exporting to PDF and other ebooks format. A lot of rich-content does not translate well from the Web to PDF. GitBook will expose a developer API for people to consume and extend their content. It is not excluded that someone build a PDF export tool using the API, but it will not be officially supported. See the section about offline access if this is the part you cared about.
 ```
+
+## 放到Blog中
+*hexo 为例*
+
+- 将gitbook作为自项目添加到当前项目中
+```bash
+git submodule add git@github.com:IanVzs/book_architecture.git gitbooks/book_architecture
+```
+- build gitbook和hexo 再将两者静态文件放在一起
+```bash
+ cd gitbooks/book_architecture/ && gitbook build
+ hexo build
+ cp -r gitbooks/book_architecture/_book/ public/book_architecture
+```
+- 使用`https://ianvzs.github.io | localhost:4000`访问原Blog，增加uri`/book_architecture`访问gitbook

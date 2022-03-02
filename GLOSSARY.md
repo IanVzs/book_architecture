@@ -21,3 +21,10 @@ A fast, simple & powerful blog framework, powered by Node.js.
 
 ## wsl
 windows端的linux子系统 (windows sub linux)
+
+## gitbook
+构建当前网页书籍的工具
+Modern documentation format and toolchain using Git and Markdown
+
+- [Github](https://github.com/GitbookIO/gitbook)
+- [官网](https://www.gitbook.com)
