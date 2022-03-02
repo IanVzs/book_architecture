@@ -1,4 +1,6 @@
 # Vim 使用
+Auther: Ian
+
 ![vim](https://www.vim.org/images/vim_header.gif)
 
 ## 注释

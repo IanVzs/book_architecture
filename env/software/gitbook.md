@@ -3,6 +3,7 @@ Author: Ian
 
 ## 安装
 - [官方文档 Github](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md#setup-and-installation-of-gitbook)
+- [Gitbook 打造的 Gitbook 说明文档](https://www.mapull.com/gitbook/comscore/)
 - 使用`npm`进行安装, 安装npm (v4.0.0 and above is recommended)
 - `npm install gitbook-cli -g` 需要`sudo`权限
 - 实际在执行`gitbook -V`后才算是安装完成
