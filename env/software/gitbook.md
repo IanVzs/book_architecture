@@ -1,5 +1,5 @@
 # Gitbook
-Author: ian
+Author: Ian
 
 ## 安装
 - [官方文档 Github](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md#setup-and-installation-of-gitbook)
@@ -18,11 +18,21 @@ npm 安装软件不出点儿问题貌似都不是很合适, 该问题代码级�
 64. // fs.lstat = statFix(fs.lstat)
 ```
 
-* 固然可以通过安装相匹配版本进行适配，不过...ian怕导致本机上的hexo再出现版本不兼容的问题。
+* 固然可以通过安装相匹配版本进行适配，不过...Ian怕导致本机上的hexo再出现版本不兼容的问题。
 
 ## 使用
-功能|示例|个人使用习惯(ian)
+功能|示例|个人使用习惯(Ian)
 --:|:--:|:---
 新建book|`gitbook init`|`gitbook init gitbooks/Architecture`
 编译和运行服务|`gitbook serve`|
 编译|`gitbook serve`|
+
+## pdf
+参考自 [码谱](https://www.mapull.com/gitbook/comscore/extend/pdf.html)
+- 安装`calibre` `sudo apt install calibre`
+- `gitbook pdf <gitbook-folder-location> <pdf-location>.pdf`
+
+新版的gitbook，官方已经不支持导出pdf等电子书格式，官方的解读如下：
+```
+	PDF and other ebook formats exports ？ The new version of GitBook no longer supports exporting to PDF and other ebooks format. A lot of rich-content does not translate well from the Web to PDF. GitBook will expose a developer API for people to consume and extend their content. It is not excluded that someone build a PDF export tool using the API, but it will not be officially supported. See the section about offline access if this is the part you cared about.
+```
