@@ -46,6 +46,9 @@ bjtu: {
 }
 FreeBSD: { enabled: no }
 ```
->> pkg update
+```bash
+pkg update
+```
+
 ### 附录
 Ian 整理的[各个软件换源Blog](https://ianvzs.github.io/2021/04/22/tips/for_china/)
