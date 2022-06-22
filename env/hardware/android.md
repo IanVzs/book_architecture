@@ -1,6 +1,54 @@
 # 将安卓手机用于开发
 ## Termux
 类似于WIN端的Subsystem——其实更像Ubuntu下的虚拟终端。 不过这东西功能强大，除了将安卓里的Linux发挥出来。还有Termux API来调用手机的底层接口。
+
+### 现在各个版本概览
+- python - 3.10
+- clang - 14.0.5
+- opencv - 4.5.5
+### NumPy
+```bash
+# pip3 install numpy 不能安装
+MATHLIB="m" pip3 install numpy
+# numpy      1.22.4
+```
+### C++ & OpenCV
+现在安装`opencv-python`还有问题,可能问题出现在安装`numpy`上,但后来经过努力安装好了,但版本或者其他问题导致还是不能正常运行.但C++还是很好呀.
+```bash
+pkg install opencv
+```
+
+#### opcv.cpp
+```cpp
+#include <opencv2/opencv.hpp>
+#include <iostream>
+
+using namespace cv;
+using namespace std;
+
+int main()
+{
+		Mat src = imread("logo-red.png", IMREAD_GRAYSCALE);
+		if (src.empty()) {
+				printf("could not find the image\n");
+				return -1;
+		}
+
+		imwrite("grayscale.png", src);
+		printf("save grayscale success\n");
+		// waitKey(0);
+		// system("path");
+		// getchar();
+		return 0;
+}
+```
+
+#### 编译 & 运行
+```bash
+g++ opcv.cpp -o opcv `pkg-config --cflags --libs opencv4`
+./opcv
+```
+
 ### ssh与手机连接
 #### 手机端`ssh`pc端
 
