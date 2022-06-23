@@ -48,6 +48,11 @@ int main()
 g++ opcv.cpp -o opcv `pkg-config --cflags --libs opencv4`
 ./opcv
 ```
+##### 指定编译器版本
+opencv4 需要C++11
+```
+g++ opcv.cpp -o opcv `pkg-config --cflags --libs opencv4` -std=c++11
+```
 
 ### ssh与手机连接
 #### 手机端`ssh`pc端
