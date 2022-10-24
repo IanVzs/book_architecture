@@ -14,3 +14,7 @@ _book
 *.epub
 *.mobi
 *.pdf
+
+# hugo file
+.hugo_build.lock
+posts/
