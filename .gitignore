@@ -14,3 +14,10 @@ _book
 *.epub
 *.mobi
 *.pdf
+
+# hugo file
+.hugo_build.lock
+## self config
+config.toml
+## self blog
+posts/
