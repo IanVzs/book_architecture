@@ -1,7 +1,43 @@
 # 将安卓手机用于开发
 ## Termux
 类似于WIN端的Subsystem——其实更像Ubuntu下的虚拟终端。 不过这东西功能强大，除了将安卓里的Linux发挥出来。还有Termux API来调用手机的底层接口。
+### XFCE4
+**步骤**：
+1. 安装`Termux`
+2. 执行`pkg update`
+3. 执行`pkg install git && git clone https://github.com/Yisus7u7/termux-desktop-xfce.git`
+4. 执行`cd termux-desktop-xfce && bash boostrap.sh`
 
+当然，3&4步可以合并为一句`curl -sLf https://raw.githubusercontent.com/Yisus7u7/termux-desktop-xfce/main/boostrap.sh | bash`
+### VNC
+默认VNC只能通过`localhost:1`来连接，局域网不能访问。想用大屏来看就不是很方便。
+```
+# 先执行`vncserver`使用本机的`VNC Viewer`看看效果，主要是需要先设置一下密码
+vncserver
+# 现在还无法通过局域网连接
+# 去设置
+cd ~/.vnc/
+vim config # 打开最后一行注释
+# 重新运行
+vncserver -kill :1
+vncserver
+```
+#### 配置文件一览
+
+将`config`文件最后一行的注释打开，即可
+
+```
+## Supported server options to pass to vncserver upon invocation can be listed
+## in this file. See the following manpages for more: vncserver(1) Xvnc(1).
+## Several common ones are shown below. Uncomment and modify to your liking.
+##
+# securitytypes=vncauth,tlsvnc
+# desktop=sandbox
+geometry=1280x720
+# localhost
+# alwaysshared 将这行注释取消注释
+alwaysshared # 修改成这样
+```
 ### 现在各个版本概览
 - python - 3.10
 - clang - 14.0.5

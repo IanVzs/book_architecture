@@ -7,6 +7,22 @@ tags: 杂谈
 slug: 
 ---
 
+## Jupyter-Note
+### 局域网访问
+- 方法1: 
+    - 使用`jupyter notebook --generate-config`生成配置文件
+    - 修改配置文件中`c.NotebookApp.allow_root`(因为安卓用的Termux跑的,所以伪root),`c.NotebookApp.ip`这样就能通过局域网和`Token`访问了
+    - 如果想要使用密码(长期使用局域网的话),可以使用`from notebook.auth import passwd;passwd()`生成加密密码,配置到`c.NotebookApp.password`
+- 方法2:
+    - 如果只是临时的,那传入运行命令肯定最好了,如下可以使用如下格式:
+```bash
+jupyter-notebook --allow-root --ip=0.0.0.0
+```
+### 自动补全
+1. 安装插件: `pip install jupyter_contrib_nbextensions -i https://pypi.tuna.tsinghua.edu.cn/simple`(此命令包含代理)
+2. 到`Nbextensions`中将`Disable`改为`Enable`
+3. 开始
+
 ## Vim
 ![vim](https://tse4-mm.cn.bing.net/th/id/OIP.RsJpt9plNxxlrxA9yV-OVwHaHa?pid=ImgDet&rs=1)
 ### vim 查看日志中文乱码(2021)
