@@ -7,7 +7,27 @@ tags: [markdown, learning]
 # Markdown Notes 📪
 ![markdown](https://justyy.com/wp-content/uploads/2016/01/markdown-syntax-language.png)
 
-##Test 二级标题
+## HTML锚点 - 页面内点击跳转
+>可以使用 HTML 锚点来实现点击内容跳转当前页面某标题。
+具体实现方法如下：
+```markdown
+首先，在需要跳转到的标题前插入一个 HTML 锚点，例如：
+### <a name="section1">Section 1</a>
+这个锚点的名称为 "section1"，可以根据需要自定义。
+
+在需要点击跳转的内容处，使用 Markdown 的链接语法，将链接地址设置为锚点名称加上 # 符号，例如：
+[跳转到 Section 1](#section1)
+这样，点击这个链接就会跳转到页面中的 "Section 1" 标题处。
+```
+
+### 注意事项：
+锚点名称必须是唯一的，否则链接可能会跳转到错误的位置。
+如果需要跳转到其他页面的锚点，链接地址应该包括页面路径和锚点名称，例如：/path/to/page.html#section1。
+
+--- 
+
+`## Test 二级标题`
+
 ## Now I will test the Markdown's hobiy 二级
 ### Maybe is a nice way to impove my blog. 三级
     原来标题 要# 与正文隔开一个空格…
