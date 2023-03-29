@@ -209,3 +209,44 @@ dnsPolicy: ClusterFirst
  字段中指定 `namespace`
  字段来将其关联到某个命名空间中。这个关联只是用来方便查找和管理资源，不会对 `PersistentVolume`
  对象本身产生影响。
+
+## 知识问答
+### 1. nodeSelector 和 nodeSelectorTerms 有什么区别？
+> ChatGPT:
+
+- 在 Kubernetes 中，nodeSelector 和 nodeSelectorTerms 都是用来选择哪些节点可以运行 Pod 的。
+- nodeSelector 是 PodSpec 中的一个字段，它用于指定一个键值对，只有运行在具有指定标签的节点上的 Pod 才会被调度到该节点上。例如：
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: node-1
+  containers:
+    - name: my-container
+      image: my-image
+```
+
+在上面的示例中，nodeSelector 字段指定了 Pod 只能调度到具有标签 kubernetes.io/hostname=node-1 的节点上。
+而 nodeSelectorTerms 是一个更高级别的机制，它允许在一个 Pod 中指定多个选择条件。例如：
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  nodeSelector:
+    matchExpressions:
+      - {key: zone, operator: In, values: [east, west]}
+      - {key: region, operator: NotIn, values: [us-east-1]}
+    matchLabels:
+      environment: production
+  containers:
+    - name: my-container
+      image: my-image
+```
+在上面的示例中，nodeSelector 字段指定了多个选择条件。其中 matchExpressions 指定了两个表达式，一个是 zone 标签的值必须是 east 或 west，另一个是 region 标签的值不能是 us-east-1。而 matchLabels 指定了 environment 标签的值必须是 production。
+
+因此，nodeSelector 只能指定一个选择条件，而 nodeSelectorTerms 可以指定多个选择条件。\
