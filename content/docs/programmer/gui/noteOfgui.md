@@ -9,6 +9,27 @@ slug: notesPython
 author:Ian
 
 # Python GUI 💽
+
+## pynput
+在 pynput 模块中，Win键被称为“特殊键”（Special keys），需要使用特殊的名称来表示。
+
+以下是可以使用的特殊键名称列表：
+- https://pynput.readthedocs.io/en/latest/keyboard.html?highlight=%3Ccmd%3E#controlling-the-keyboard
+
+因此，如果你想要在热键设置中使用 Win键+空格 这个热键，可以将它们分别替换为 cmd 和 space，如下所示：
+```py
+from pynput import keyboard
+
+def on_activate():
+    print('Hotkey activated')
+
+def on_exit():
+    print('Hotkey exited')
+    return False
+
+with keyboard.GlobalHotKeys({'<cmd>+<space>': on_activate}) as h:
+    h.join(on_exit)```
+在这个例子中，我们使用 <cmd>+<space> 来表示 Win键+空格 热键，因为在Mac中，Command键（cmd）可以起到类似于Win键的作用。
 ## PyQt
 ![qt](https://tse4-mm.cn.bing.net/th/id/OIP.J4_Nqrcc0x7slHHUFwKLSQHaI6?pid=ImgDet&rs=1 "tmp")
 
