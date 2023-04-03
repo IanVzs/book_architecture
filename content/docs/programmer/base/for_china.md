@@ -9,6 +9,8 @@ tags:
 ![mu ou](http://img.hc360.com/broadcast/info/images/200909/200909101744424019.jpg "ma liang")
 
 在国内用原源都会很慢, 所以总结一下各个软件(?吧)换源方法.
+## Qt
+使用Maintain管理kit时，可以在Settings中设置Repositories，设置地址可从[Qt Downloads](https://download.qt.io/static/mirrorlist/)页面查询.
 ## apt
 可解决版本升级时的问题,即使用了国内源,最后一个文件不知道为什么还是从国外拉取...
 ```bash
