@@ -21,3 +21,6 @@ _book
 config.toml
 ## self blog
 posts/
+## build file
+public/
+resources/
