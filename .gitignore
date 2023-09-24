@@ -24,3 +24,8 @@ posts/
 ## build file
 public/
 resources/
+
+# 同步和查看软件留痕
+.DS_Store
+.ecloud/
+.obsidian/

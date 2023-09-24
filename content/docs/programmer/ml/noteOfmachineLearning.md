@@ -68,28 +68,34 @@ author: Ian
 <b>plt.legend()</b>
     # show() 之前不加这句是不会显示出标注的呦
 #### eg2(还不晓得咋回事儿)
-    import numpy as np
-    t = 2 * np.pi / 3
-    plt.plot([t, t], [0, np.cos(t)], color='blue', linewidth=2.5, linestyle="--")
-    plt.scatter([t, ], [np.cos(t), ], 50, color='blue')
 
-    plt.annotate(r'$sin(\frac{2\pi}{3})=\frac{\sqrt{3}}{2}$',
-        xy=(t, np.sin(t)), xycoords='data',
-        xytext=(+10, +30), textcoords='offset points', fontsize=16,
-        arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+```python
+import numpy as np
+t = 2 * np.pi / 3
+plt.plot([t, t], [0, np.cos(t)], color='blue', linewidth=2.5, linestyle="--")
+plt.scatter([t, ], [np.cos(t), ], 50, color='blue')
 
-    plt.plot([t, t],[0, np.sin(t)], color='red', linewidth=2.5, linestyle="--")
-    plt.scatter([t, ],[np.sin(t), ], 50, color='red')
+plt.annotate(r'$sin(\frac{2\pi}{3})=\frac{\sqrt{3}}{2}$',
+	xy=(t, np.sin(t)), xycoords='data',
+	xytext=(+10, +30), textcoords='offset points', fontsize=16,
+	arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 
-    plt.annotate(r'$cos(\frac{2\pi}{3})=-\frac{1}{2}$',
-        xy=(t, np.cos(t)), xycoords='data',
-        xytext=(-90, -50), textcoords='offset points', fontsize=16,
-    arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+plt.plot([t, t],[0, np.sin(t)], color='red', linewidth=2.5, linestyle="--")
+plt.scatter([t, ],[np.sin(t), ], 50, color='red')
+
+plt.annotate(r'$cos(\frac{2\pi}{3})=-\frac{1}{2}$',
+	xy=(t, np.cos(t)), xycoords='data',
+	xytext=(-90, -50), textcoords='offset points', fontsize=16,
+arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+```
 
 ### 坐标标签显示方案
+```python
     plt.setp(plt.gca().get_xticklabels(), rotation=20, horizontalalignment='right')
     # 貌似除了角度和right，没有了修改内容
+```
 ### 来画一个动态图吧（感觉没啥作用所以就小标题了）
+```python
     import matplotlib.pyplot as plt
     from matplotlib.patches import Circle
     import numpy as np
@@ -118,8 +124,10 @@ author: Ian
             plt.pause(0.1)
     except Exception as err:
         print(err)
+```
 ## pandas
 ### DataFrame
+```python
     import pandas as pd
     import numpy as np
     a = {'a':['A','B','C'], 'b':[1,2,3], 'c':['lo', 'hel', 'hi'], 'd':[7,8,9]}
@@ -133,9 +141,9 @@ author: Ian
 
     df[['b','c']].to_records()[1]['b']
     df[['b','c']]
+```
 #### columns  index
     列，参数(行)
-
 #### 取用方法
 ```python 
     dfValue.loc[indexKey][colKey]
