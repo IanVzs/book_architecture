@@ -1,5 +1,5 @@
 ---
-title: k8s
+title: k8s技术分享
 date: 2023-09-07 20:58:56
 category:
   - note
@@ -8,8 +8,8 @@ category:
 tags:
   - Linux
 slug:
---
--
+---
+
 # k8s技术分享
 
 # 工作负载资源

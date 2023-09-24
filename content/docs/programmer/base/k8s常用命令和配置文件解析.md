@@ -1,5 +1,5 @@
 ---
-title: k8s
+title: k8s学习-常用命令和配置文件
 date: 2023-03-27 10:58:56
 category:
   - note
