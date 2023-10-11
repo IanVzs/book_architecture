@@ -6,3 +6,7 @@ linux中使用bash_completion工具进行自动不全，在某些发行版或者
 sudo cp bash_completion /usr/share/bash-completion/bash_completion
 source /usr/share/bash-completion/bash_completion
 ```
+
+## Powershell
+命令历史存储在:
+`C:\Users\{USERNAME}\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine`下 `ConsoleHost_history.txt`文件

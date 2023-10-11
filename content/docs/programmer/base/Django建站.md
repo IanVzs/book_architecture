@@ -10,7 +10,100 @@ author: Ian
 
 # Django 的一些东西
 ![http server/client](http://lofrev.net/wp-content/photos/2017/04/http_logo_dpwnload.png)
+## 一些问题
+### 使用字体 `zh-cn`时如果报错: 
+>OSError: No translation files found for default language zh-cn.
 
+```python
+LANGUAGE_CODE = 'zh-Hans'
+TIME_ZONE = 'Asia/Shanghai'
+# zh-Hans是简体中文 zh-Hant是繁体中文
+
+# 如果数据库有UTC的时间，那么可以设置：
+# USE_TZ = True 改为
+USE_TZ = False
+```
+### 时区问题
+>python3.8/site-packages/django/db/models/fields/__init__.py:1416: RuntimeWarning: DateTimeField {DATABASEMODEL}.update_time received a naive datetime (2023-09-14 21:55:56) while time zone support is active.
+  warnings.warn("DateTimeField %s received a naive datetime (%s)"
+
+这个警告是由于在使用带有时区支持的DateTimeField字段时，传入了一个没有时区信息的datetime对象。要修复这个警告，你可以将传入DateTimeField字段的datetime对象转换为带有时区信息的datetime对象。
+
+有两种方法可以解决这个问题：
+
+1. 使用带有时区信息的datetime对象：确保在创建datetime对象时，使用正确的时区信息。你可以使用`pytz`库来设置时区信息，例如：
+```python
+from datetime import datetime
+import pytz
+
+# 创建带有时区信息的datetime对象
+naive_datetime = datetime(2023, 9, 14, 21, 55, 56)
+timezone = pytz.timezone("Asia/Shanghai")
+aware_datetime = timezone.localize(naive_datetime)
+
+# 将带有时区信息的datetime对象传递给DateTimeField字段
+ScannerDevice.update_time = aware_datetime
+```
+2. 将DateTimeField字段的`auto_now`或`auto_now_add`属性设置为`True`：这将自动将字段的值设置为当前的带有时区信息的datetime对象。例如：
+```python
+from django.db import models
+
+class DATABASEMODEL(models.Model):
+    update_time = models.DateTimeField(auto_now=True)
+```
+通过以上两种方法之一，你可以修复这个警告并确保正确处理时区信息。
+## daemon 命令
+> Django 的 BaseCommand怎么使用？
+
+**AI:**
+要使用 Django 的 BaseCommand，你需要按照以下步骤操作：
+1. 创建一个新的 Python 模块或文件，例如 `myapp/management/commands/mycommand.py` **这里的路径很重要**
+2. 在 `mycommand.py` 文件中导入必要的模块和类：
+```python
+from django.core.management.base import BaseCommand
+```
+3. 创建一个继承自 `BaseCommand` 的子类，并实现 `handle()` 方法来定义你的命令逻辑。例如：
+
+```python
+class Command(BaseCommand):
+    help = 'My custom command'
+
+    def handle(self, *args, **options):
+        # 在这里编写你的命令逻辑
+        self.stdout.write('Hello, world!')
+```
+
+4. 在 Django 项目中运行你的命令。使用以下命令格式：
+
+```bash
+python manage.py mycommand
+```
+
+这将执行你在 `handle()` 方法中定义的逻辑。
+你还可以在 `handle()` 方法中使用 `self.stdout.write()` 方法来输出信息到命令行。
+### 示例如下:
+
+```python
+from django.core.management.base import BaseCommand
+
+class Command(BaseCommand):
+    def add_arguments(self, parser):
+        parser.add_argument('-s', "--start", required=True)
+        parser.add_argument('-e', "--end", required=True)
+  
+    def handle(self, **options):
+        try:
+            start_timed = datetime.datetime.strptime(options.get('start', None), "%Y-%m-%d")
+            end_timed = datetime.datetime.strptime(options.get('end', None), "%Y-%m-%d")
+            run(start_timed, end_timed)
+        except Exception:
+            print(traceback.print_exc())
+```
+
+如此就可以使用如下命令执行:
+```bash
+python manage.py {pyfilename} --start 2023-04-01 --end 2023-05-01
+````
 ## 利用nginxfd反向代理解决跨域问题
 纠结了很久的跨域问题。。。。。。一直配置Django。。。。。问题重重，从配置方面这条路还没找到解决方案，如以后确认无误后就再放在这儿。告慰前面付出的种种艰辛 😓😀
 
