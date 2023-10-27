@@ -100,6 +100,11 @@ awk -F ',' '{print $NF}'
 - `$NF` 末尾 同理也可 `$1`
 - `$1, $3` 表示1列+3列,并不含2列
 
+只能使用 `单引号` 双引号不行的呦( `"{print $1}"` )
+```bash
+kubectl get pod -n namespace | grep text | awk '{print $1}'
+```
+
 ### find + vim 查找打开一条龙
 ```bash
 find * -name "*wd.csv" -exec vim {} \;
